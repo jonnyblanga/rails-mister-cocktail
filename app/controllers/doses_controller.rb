@@ -9,6 +9,8 @@ def new
   def create
     @cocktail = Cocktail.find(params[:cocktail_id])
     @dose = Dose.new(dose_params)
+    @ingredients = Ingredient.all
+
     # we need `restaurant_id` to asssociate review with corresponding restaurant
     @dose.cocktail = Cocktail.find(params[:cocktail_id])
     if @dose.save

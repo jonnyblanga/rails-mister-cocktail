@@ -1,6 +1,5 @@
 class CocktailsController < ApplicationController
 
-
   def index
     @cocktails = Cocktail.all
   end
@@ -18,7 +17,7 @@ class CocktailsController < ApplicationController
     if @cocktail.save
       redirect_to cocktail_path(@cocktail)
     else
-      render :new #vediamo se metterlo o no
+      render :new
     end
   end
 
