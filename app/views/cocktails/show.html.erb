@@ -1,0 +1,16 @@
+<%= @cocktail.name %> <br>
+
+<%= link_to "Add a dose", new_cocktail_dose_path(@cocktail) %><br>
+
+
+<% @cocktail.doses.each do |dose|  %>
+  <%=  dose.description %>
+
+  <%= link_to "Delete a dose",dose_path(dose),
+  method: :delete,
+        data: { confirm: "Are you sure?" } %>
+
+        <i class="fa fa-trash destroy_dose"></i><br>
+<% end %>
+
+<%= link_to "Home", cocktails_path %>
