@@ -8,14 +8,20 @@
     <h1>Discover the best <strong>cocktails</strong> in town!</h1>
   </div>
 </div>
-
+<%= link_to new_cocktail_path do %>
+  <div class="add-cocktail">
+    <i class="fas fa-plus"></i>
+  </div>
+<% end %>
 <div class="cards-container">
   <div class="cards">
     <% @cocktails.each do |cocktail| %>
+      <% if cocktail.photo.present? %>
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path cocktail.photo %>); background-position: center;"><%= link_to cocktail.name, cocktail_path(cocktail) %></div>
+      <% else %>
       <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://cucina.corriere.it/methode_image/2017/02/25/Cucina/Foto%20Trattate/1_1488030320589-kAXF-RVxqK6xvnbxeN8CXWW9HzsJ-620x385@Cucina-Web.jpg); background-position: center;"><%= link_to cocktail.name, cocktail_path(cocktail) %></div>
-    <% end %>
 
-  <div class="add-cocktail" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://image.flaticon.com/icons/svg/109/109433.svg); background-position: center;"><%= link_to "Add a new cocktail", new_cocktail_path %>
-  </div>
+      <% end %>
+    <% end %>
   </div>
 </div>
